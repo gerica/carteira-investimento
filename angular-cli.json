@@ -18,7 +18,13 @@
       "prefix": "invet",
       "mobile": false,
       "styles": [
-        "styles.css"
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "assets/css/bootstrap.min.css",
+        "assets/css/bootstrap-theme.css",
+        "assets/css/elegant-icons-style.css",
+        "assets/css/style.css",
+        "assets/css/style-responsive.css",
+        "styles.scss"
       ],
       "scripts": [],
       "environments": {
@@ -39,7 +45,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "prefixInterfaces": false,
     "inline": {
       "style": false,
