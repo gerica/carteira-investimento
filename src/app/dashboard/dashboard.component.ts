@@ -1,40 +1,48 @@
-import { element } from 'protractor';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Rx';
+import { Router } from '@angular/router';
+import { AuthService } from './../shared/service/auth.service';
 
 @Component({
   selector: 'invet-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
-  isClassVisible: boolean;
+export class DashboardComponent implements OnInit, OnDestroy {
+  isClassClose: boolean = true;
+  private _isAuthenticated = false;
+  private sub: Subscription;
 
-  constructor() { }
+  constructor(private authService: AuthService,
+    private route: Router) {
+  }
+
 
   ngOnInit() {
-    // jQuery(this.elementRef.nativeElement).find('#sidebar .sub-menu > a').click(function () {
-    //   var last = jQuery('.sub-menu.open', jQuery('#sidebar'));
-    //   jQuery('.menu-arrow').removeClass('arrow_carrot-right');
-    //   jQuery('.sub', last).slideUp(200);
-    //   var sub = jQuery(this).next();
-    //   if (sub.is(":visible")) {
-    //     jQuery('.menu-arrow').addClass('arrow_carrot-right');
-    //     sub.slideUp(200);
-    //   } else {
-    //     jQuery('.menu-arrow').addClass('arrow_carrot-down');
-    //     sub.slideDown(200);
-    //   }
-    //   var o = (jQuery(this).offset());
-    //   var diff = 200 - o.top;
-    //   // if (diff > 0)
-    //   //   jQuery("#sidebar").scrollTo("-=" + Math.abs(diff), 500);
-    //   // else
-    //   //   jQuery("#sidebar").scrollTo("+=" + Math.abs(diff), 500);
-    // });
+    this.sub = this.authService.getAuth().subscribe(
+      authStatus => {
+        if (authStatus) {
+          this._isAuthenticated = true;
+        } else {
+          this._isAuthenticated = false;
+        }
+      }
+    );
+  }
+
+  isAuth(): boolean {
+    return this._isAuthenticated;
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   onToogleMenu(): void {
-    this.isClassVisible = !this.isClassVisible;
+    if (this.isAuth()) {
+      this.isClassClose = !this.isClassClose;
+    }
+    this.isClassClose = this.isClassClose;
   }
 
 }

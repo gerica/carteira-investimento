@@ -4,7 +4,7 @@
             </div>
 
             <!--logo start-->
-            <a href="index.html" class="logo">Nice <span class="lite">Admin</span></a>
+            <a href="index.html" class="logo">Carteira <span class="lite">Investimento</span></a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">
@@ -19,12 +19,12 @@
                 <!--  search form end -->                
             </div>
 
-            <div class="top-nav notification-row">                
+            <div class="top-nav notification-row" *ngIf="isAuthenticated">                
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
                     
                     <!-- task notificatoin start -->
-                    <li id="task_notificatoin_bar" class="dropdown">
+                    <li id="task_notificatoin_bar" class="dropdown" invetShowItens>
                         <a data-toggle="dropdown" class="dropdown-toggle:not" href="#">
                             <i class="icon-task-l"></i>
                             <span class="badge bg-important">6</span>
@@ -109,7 +109,7 @@
                     </li>
                     <!-- task notificatoin end -->
                     <!-- inbox notificatoin start-->
-                    <li id="mail_notificatoin_bar" class="dropdown">
+                    <li id="mail_notificatoin_bar" class="dropdown" invetShowItens>
                         <a data-toggle="dropdown" class="dropdown-toggle:not" href="#">
                             <i class="icon-envelope-l"></i>
                             <span class="badge bg-important">5</span>
@@ -174,7 +174,7 @@
                     </li>
                     <!-- inbox notificatoin end -->
                     <!-- alert notification start-->
-                    <li id="alert_notificatoin_bar" class="dropdown">
+                    <li id="alert_notificatoin_bar" class="dropdown"  invetShowItens>
                         <a data-toggle="dropdown" class="dropdown-toggle:not" href="#">
 
                             <i class="icon-bell-l"></i>
@@ -219,9 +219,11 @@
                         </ul>
                     </li>
                     <!-- alert notification end-->
-                    <!-- user login dropdown start-->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                    <!-- user login dropdown start-->      
+                    <li class="dropdown" invetShowItens>
+                        <!--[ngClass]="{'open': isShowMenuProfile}"-->
+                        <!--[ngClass]="{'sidebar-closed': isClassVisible }"-->
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" (click)="isShowMenuProfile = !isShowMenuProfile;">
                             <span class="profile-ava">
                                 <img alt="" src="assets/img/avatar1_small.jpg">
                             </span>
@@ -238,19 +240,11 @@
                             </li>
                             <li>
                                 <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon_chat_alt"></i> Chats</a>
-                            </li>
+                            </li>                            
                             <li>
                                 <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
                             </li>
-                            <li>
-                                <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-                            </li>
-                            <li>
-                                <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-                            </li>
+                            
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
