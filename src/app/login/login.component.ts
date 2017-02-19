@@ -1,8 +1,9 @@
+import { AuthService } from './../shared/service/auth.service';
 import { AlertaUtil } from './../shared/utils/alerta-util';
 import { Usuario } from './../shared/modelo/usuario';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from './login.service';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 /**
  *  This class represents the lazy loaded LoginComponent.
@@ -12,52 +13,42 @@ import { LoginService } from './login.service';
     moduleId: module.id,
     selector: 'login-cmp',
     templateUrl: 'login.component.html',
-    providers: [LoginService],
     styleUrls: ['login.component.scss']
 })
 
 export class LoginComponent {
-    usuario = new Usuario();
     alertaUtil: AlertaUtil = new AlertaUtil();
+    myForm: FormGroup;
+    error = false;
 
-    constructor(private loginSerice: LoginService, private router: Router) { }
+    constructor(private fb: FormBuilder,
+        private authService: AuthService,
+        private route: Router) {
 
-    login(event: any): void {
+    }
+
+    onSignin(event: any) {
         event.preventDefault();
 
-        // Get all comments
-        this.loginSerice.login(this.usuario)
-            .subscribe(
+        this.authService.login(this.myForm.value)
+            .then(
             result => {
-                localStorage.setItem('id_token', result.token);
-                let usuarioLocal = result.usuario;
-                usuarioLocal.password = '';
-                localStorage.setItem('usuario_investimento', JSON.stringify(usuarioLocal));
-                this.router.navigate(['/dashboard/home']);
-            },
-            err => {
-                // Log errors if any
+                this.route.navigate(['']);
+
+            }, error => {
                 this.alertaUtil.addMessage({
                     type: 'danger',
                     closable: true,
-                    msg: err
+                    msg: error
                 });
             });
-
     }
-    // public atualizarAtualBMF(): void {
-    //     this.cotacaoService.atualizarAtualBMF()
-    //         .subscribe(
-    //         result => {
-    //             console.log(result.message);
-    //         },
-    //         err => {
-    //             // Log errors if any                                    
-    //             this.alertaUtil.addMessage({
-    //                 type: 'danger',
-    //                 closable: true,
-    //                 msg: err.message
-    //             });
-    //         });
-    // }
+
+    ngOnInit(): any {
+        this.myForm = this.fb.group({
+            email: ['', Validators.required],
+            password: ['', Validators.required],
+            rememeberMe: ['',],
+        });
+    }
 }

@@ -1,6 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Rx';
-import { Router } from '@angular/router';
 import { AuthService } from './../shared/service/auth.service';
 
 @Component({
@@ -13,11 +13,18 @@ export class TopnavComponent {
 
   @Output() toggleMenuEmitter = new EventEmitter();
 
-  constructor() {
+  constructor(private authService: AuthService,
+    private route: Router) {
   }
 
   onChangeVisibility(): void {
     this.toggleMenuEmitter.emit();
+  }
+
+  onLogout(): void {
+    this.authService.logout()
+      .then(() => this.route.navigate([''])
+      );
   }
 
 }

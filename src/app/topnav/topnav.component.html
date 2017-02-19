@@ -223,11 +223,11 @@
                     <li class="dropdown" invetShowItens>
                         <!--[ngClass]="{'open': isShowMenuProfile}"-->
                         <!--[ngClass]="{'sidebar-closed': isClassVisible }"-->
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" (click)="isShowMenuProfile = !isShowMenuProfile;">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" >
                             <span class="profile-ava">
-                                <img alt="" src="assets/img/avatar1_small.jpg">
+                                <img alt="" src="assets/img/profile_tarcisio_35_35.jpg">
                             </span>
-                            <span class="username">Jenifer Smith</span>
+                            <span class="username">Rogério Cardoso</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
@@ -242,10 +242,30 @@
                                 <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
                             </li>                            
                             <li>
-                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
+                                <a href="#" (click)="onLogout()"><i class="icon_key_alt"></i> Log Out</a>
                             </li>
                             
                         </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+                <!-- notificatoin dropdown end-->
+            </div>
+
+            <div class="top-nav notification-row" *ngIf="!isAuthenticated">                
+                <!-- notificatoin dropdown start-->
+                <ul class="nav pull-right top-menu">
+                    
+                    
+                    <li class="dropdown" invetShowItens>                    
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" [routerLink]="['login']">
+                            <span class="profile-ava">
+                                <i class="fa fa-user-o" aria-hidden="true"></i>
+
+                            </span>
+                            <span class="username">Login</span>
+                         
+                        </a>                        
                     </li>
                     <!-- user login dropdown end -->
                 </ul>

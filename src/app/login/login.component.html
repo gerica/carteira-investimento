@@ -1,32 +1,31 @@
-<div class="login-page">
-    <div class="row">
-        <div class="offset-3 col-sm-6 offset-3">
-            <alert *ngFor="let alert of alertaUtil.alerts; let i = index" [type]="alert.type" dismissible="true" (close)="alertaUtil.closeAlert(i)">
-                {{ alert?.msg }}
-            </alert>
-            <img src="assets/img/SB-admin.png" width="150px" class="user-avatar" />
-            <h1>Investimento</h1>
-            <form role="form" #loginForm="ngForm" (submit)="login($event)">
-                <div class="form-content">
-                    <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="email" name="email" [(ngModel)]="usuario.email" placeholder="email" required #email="ngModel">
-                    </div>
-                    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-                        O Email é obrigatório.
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="password" name="password" [(ngModel)]="usuario.password" placeholder="password" required #password="ngModel">
-                    </div>
-                    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-                        A Senha é obrigatório.
-                    </div>
+<div class="login-img3-body">
+    <div class=" container">
+        <alert *ngFor="let alert of alertaUtil.alerts; let i = index" [type]="alert.type" dismissible="true" (close)="alertaUtil.closeAlert(i)">
+            {{ alert?.msg }}
+        </alert>
+        <form class="login-form" [formGroup]="myForm" (submit)="onSignin($event)">
+            <div class="login-wrap">
+                <p class="login-img"><i class="icon_lock_alt"></i></p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon_profile"></i></span>
+                    <input formControlName="email" type="email" id="email" class="form-control">
                 </div>
-                <button type="submit" class="btn rounded-btn">Login</button>                
-                &nbsp;
-                <button type="button" class="btn rounded-btn">Registrar</button>
-                <!--<a type="submit" class="btn rounded-btn" routerLink="/signup">Register</a>-->
-            </form>
-            <!-- {{diagnostic}} -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                    <input formControlName="password" type="password" id="password" class="form-control">
+                </div>
+                <label class="checkbox">
+                <input formControlName="rememeberMe" type="checkbox" value="remember-me"> Remember me
+                <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
+            </label>
+                <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="!myForm.valid">Login</button>
+                <button class="btn btn-info btn-lg btn-block" type="button">Signup</button>
+            </div>
+        </form>
+        <div class="text-right">
+            <div class="credits">
+                <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a>                by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
         </div>
     </div>
 </div>

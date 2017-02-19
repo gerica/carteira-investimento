@@ -23,9 +23,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
       authStatus => {
         if (authStatus) {
           this._isAuthenticated = true;
+          console.log(this._isAuthenticated);
         } else {
           this._isAuthenticated = false;
+          console.log(this._isAuthenticated);
         }
+        this.onToogleMenu();
       }
     );
   }
@@ -41,6 +44,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   onToogleMenu(): void {
     if (this.isAuth()) {
       this.isClassClose = !this.isClassClose;
+    } else {
+      this.isClassClose = true;
     }
     this.isClassClose = this.isClassClose;
   }
