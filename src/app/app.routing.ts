@@ -1,3 +1,4 @@
+import { FundamentalistaRoutes } from './publico/fundamentalista/fundamentalista.routing';
 import { DashboardRoutes } from './dashboard/dashboard.routing';
 import { LoginRoutes } from './login/login.routing';
 import { Routes, RouterModule } from '@angular/router';

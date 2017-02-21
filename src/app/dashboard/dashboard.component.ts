@@ -22,11 +22,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.sub = this.authService.getAuth().subscribe(
       authStatus => {
         if (authStatus) {
-          this._isAuthenticated = true;
-          console.log(this._isAuthenticated);
+          this._isAuthenticated = true;          
         } else {
-          this._isAuthenticated = false;
-          console.log(this._isAuthenticated);
+          this._isAuthenticated = false;          
         }
         this.onToogleMenu();
       }

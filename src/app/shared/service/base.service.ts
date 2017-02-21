@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Rx';
-import { Response, Http } from '@angular/http';
+import { Response, Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -7,9 +7,15 @@ export class BaseService {
 
   constructor(public http: Http) { }
 
+  public createAuthorizationHeader(contentHeaders: Headers) {
+    contentHeaders.append('Accept', 'application/json');
+    contentHeaders.append('Content-Type', 'application/json');
+  }
+
   public extractData(res: Response) {
     return res.json();
   }
+
   public handleError(error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;

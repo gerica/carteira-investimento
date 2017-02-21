@@ -1,26 +1,45 @@
-import { Injectable } from '@angular/core';
+import { AuthService } from './../service/auth.service';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
-import { tokenNotExpired } from 'angular2-jwt';
-
+import { Subscription } from 'rxjs/Rx';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuard {}
+// implements CanActivate, OnInit, OnDestroy {
 
-  private semServidor = false;
+//   private semServidor = false;
+//   private _isAuthenticated = false;
+//   private sub: Subscription;
 
-  constructor(private router: Router) {}
+//   constructor(private authService: AuthService,
+//     private router: Router) { }
 
-  canActivate() {
-  	if(this.semServidor) {
-  		return true;
-  	}
+//   ngOnInit() {
+//     this.sub = this.authService.getAuth().subscribe(
+//       authStatus => {
+//         if (authStatus) {
+//           this._isAuthenticated = true;
+//         } else {
+//           this._isAuthenticated = false;
+//         }
+//       }
+//     );
+//   }
 
-  	//return tokenExistsAndNotExpired();
-    if (tokenNotExpired()) {
-      return true;
-    }
+//   isAuth(): boolean {
+//     return this._isAuthenticated;
+//   }
 
-    this.router.navigate(['']);
-    return false;
-  }
-}
+//   ngOnDestroy() {
+//     this.sub.unsubscribe();
+//   }
+
+//   canActivate() {
+//     console.log('TESTE');
+//     if (this.isAuth()) {
+//       return true;
+//     }
+//     this.router.navigate(['publico']);
+//     return false;
+//   }
+// }

@@ -9,7 +9,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { AngularFireModule } from 'angularfire2';
-import { PublicoComponent } from './publico/publico.component';
+import { FundamentalistaComponent } from './publico/fundamentalista/fundamentalista.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDhNUrO6kuDGg0jVJucTY0UWJQ49vHv10Q",
@@ -22,7 +22,7 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
