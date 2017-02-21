@@ -1,3 +1,4 @@
+import { PublicoRoutes } from './publico/publico.routing';
 import { FundamentalistaRoutes } from './publico/fundamentalista/fundamentalista.routing';
 import { DashboardRoutes } from './dashboard/dashboard.routing';
 import { LoginRoutes } from './login/login.routing';
@@ -5,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const APP_ROUTES: Routes = [
     ...DashboardRoutes,
-    ...LoginRoutes,
+    ...LoginRoutes,    
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

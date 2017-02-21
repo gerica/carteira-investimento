@@ -1,3 +1,5 @@
+import { PublicoModule } from './publico/publico.module';
+import { AuthGuard } from './shared/common/auth.guard';
 import { AuthService } from './shared/service/auth.service';
 import { DashboardModule } from './dashboard/dashborad.module';
 import { LoginModule } from './login/login.module';
@@ -30,10 +32,10 @@ export const firebaseConfig = {
     HttpModule,
     routing,
     LoginModule,
-    DashboardModule,
+    DashboardModule,    
     AngularFireModule.initializeApp(firebaseConfig),
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

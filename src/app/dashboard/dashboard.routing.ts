@@ -9,7 +9,9 @@ export const DashboardRoutes: Route[] = [
         path: '',
         component: DashboardComponent,
         children: [
-            ...PublicoRoutes
-        ]
+            ...PublicoRoutes,
+            ...FundamentalistaRoutes
+        ],
+        canActivate: [AuthGuard]
     }
 ];
