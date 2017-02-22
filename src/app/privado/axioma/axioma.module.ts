@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AlertModule } from 'ng2-bootstrap';
+import { TreeModule } from 'angular2-tree-component';
 
 @NgModule({
     imports: [CommonModule,
         RouterModule,
-        FormsModule,        
-        AlertModule.forRoot()],
+        FormsModule,
+        AlertModule.forRoot(),
+        TreeModule],
     declarations: [AxiomaComponent],
     exports: [AxiomaComponent]
 })
