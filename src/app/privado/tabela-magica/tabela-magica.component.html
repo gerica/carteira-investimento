@@ -35,7 +35,7 @@
             <tbody>
               <tr *ngFor="let p of papeisFundamento;">
                 <th scope="row">{{p.rank}}</th>
-                <td>{{p.papel}}</td>
+                <td><a href="http://fundamentus.com.br/detalhes.php?papel={{p.papel}}" target="blank"> {{p.papel}}</a></td>
                 <td>{{p?.fundamento.p_l}}</td>
                 <td>{{p?.fundamento.p_vp}}</td>
                 <td>{{p?.fundamento.roe}}</td>
@@ -55,22 +55,27 @@
         </div>
       </div>
       <div class="col-lg-4">
+        <header class="panel-heading">
+          <p class="h3 text-center">
+            Remodendações
+          </p>
+        </header>
         <div class="list-group">
           <a href="http://www.fundamentus.com.br/" target="blank" class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Fundamentus</h5>              
+              <h5 class="mb-1">Fundamentus</h5>
             </div>
-            <p class="mb-1">Site com informações fundamentalista das empresas que operam na BOVESPA.</p>  
-            <small class="text-muted">http://www.fundamentus.com.br/index.php.</small>          
+            <p class="mb-1">Site com informações fundamentalista das empresas que operam na BOVESPA.</p>
+            <small class="text-muted">http://www.fundamentus.com.br/index.php.</small>
           </a>
           <a href="http://investidorjovem.com.br/ranking-de-acoes" target="blank" class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Ranking de Ações</h5>              
+              <h5 class="mb-1">Ranking de Ações</h5>
             </div>
             <p class="mb-1">A fórmula mágica de Joel Greenblatt.</p>
             <small class="text-muted">http://investidorjovem.com.br/ranking-de-acoes</small>
           </a>
-          
+
         </div>
       </div>
     </div>

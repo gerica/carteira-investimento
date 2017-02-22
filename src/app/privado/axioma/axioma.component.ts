@@ -56,9 +56,7 @@ export class AxiomaComponent implements OnInit {
             });
           }
         }
-      }
-
-      console.log(this.nodes);
+      }      
     }
   }
 }
