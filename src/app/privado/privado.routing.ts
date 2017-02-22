@@ -1,3 +1,4 @@
+import { AxiomaRoutes } from './axioma/axioma.routing';
 import { HomeRoutes } from './home/home.routing';
 import { PrivadoComponent } from './privado.component';
 import { AuthGuard } from './../shared/common/auth.guard';
@@ -11,7 +12,8 @@ export const PrivadoRoutes: Route[] = [
         component: PrivadoComponent,
         children: [
             ...HomeRoutes,
-            ...FundamentalistaRoutes
+            ...FundamentalistaRoutes,
+            ...AxiomaRoutes
         ],
         canActivate: [AuthGuard]
     }

@@ -1,5 +1,4 @@
-import { AxiomaModule } from './../axioma/axioma.module';
-import { HomeComponent } from './home.component';
+import { AxiomaComponent } from './axioma.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -10,10 +9,9 @@ import { AlertModule } from 'ng2-bootstrap';
     imports: [CommonModule,
         RouterModule,
         FormsModule,        
-        AlertModule.forRoot(),
-        AxiomaModule],
-    declarations: [HomeComponent],
-    exports: [HomeComponent]
+        AlertModule.forRoot()],
+    declarations: [AxiomaComponent],
+    exports: [AxiomaComponent]
 })
 
-export class HomeModule { }
+export class AxiomaModule { }

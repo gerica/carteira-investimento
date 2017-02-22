@@ -1,7 +1,6 @@
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './../shared/shared.module';
 import { PrivadoComponent } from './privado.component';
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -16,7 +15,7 @@ import { HomeComponent } from './home/home.component';
         AlertModule.forRoot(),
         HomeModule,
         SharedModule.forRoot()],
-    declarations: [PrivadoComponent],
+    declarations: [PrivadoComponent,],
     exports: [PrivadoComponent]
 })
 
