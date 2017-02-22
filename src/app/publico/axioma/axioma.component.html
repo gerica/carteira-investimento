@@ -7,23 +7,18 @@
   <div class="card">
     <div class="card-block">
       <div class="card-title">
-        <p class="h3 text-center"> 1º Grande Axioma: <b> Risco</b></p>
+        <p class="h3 text-center"> <b> {{axioma?.titulo}}</b></p>
       </div>
     </div>
     <div class="card-block">
-      <ul>
-        <li>
-          <p class="h4">Preocupação não é doença, mas sinal de saúde.</p>
-        </li>
-        <li>
-          <p class="h4">Se você não está preocupado, não está arriscando o bastante.</p>
-        </li>
+      <ul>        
+        <li *ngFor="let conteudo of conteudos">
+          <p class="h4">{{conteudo}}</p>
+        </li>        
       </ul>
-
-
       <div class="card-foot">
         <div class="col-md-offset-6 col-sm-16">
-          <a class="btn btn-circle btn-lg" style="font-size: 36px;" (click)="onGetNext()" title="Próximo">
+          <a class="btn btn-circle btn-lg" style="font-size: 36px;" (click)="onNextAxioma()" title="Próximo">
             <i class="fa fa-angle-double-right animated"></i>
           </a>
         </div>
