@@ -14,10 +14,14 @@ export class FundamentoService {
 
     constructor(private af: AngularFire) {
 
-
     }
 
-    public recuperarListaFundamentalista(): FirebaseListObservable<any> {
+    public recuperarLista(): FirebaseListObservable<any> {
+        this.papeisFundamento = this.af.database.list('/papel');
+        return this.papeisFundamento;
+    }
+
+    public recuperarListaTop5(): FirebaseListObservable<any> {
         this.papeisFundamento = this.af.database.list('/papel', {
             query: {
                 orderByChild: 'rank',

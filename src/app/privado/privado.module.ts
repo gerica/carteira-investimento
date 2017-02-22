@@ -1,3 +1,4 @@
+import { TabelaMagicaModule } from './tabela-magica/tabela-magica.component.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './../shared/shared.module';
 import { PrivadoComponent } from './privado.component';
@@ -7,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AlertModule } from 'ng2-bootstrap';
 import { HomeComponent } from './home/home.component';
+import { TabelaMagicaComponent } from './tabela-magica/tabela-magica.component';
 
 @NgModule({
     imports: [CommonModule,
@@ -14,8 +16,9 @@ import { HomeComponent } from './home/home.component';
         FormsModule,
         AlertModule.forRoot(),
         HomeModule,
+        TabelaMagicaModule,
         SharedModule.forRoot()],
-    declarations: [PrivadoComponent,],
+    declarations: [PrivadoComponent],
     exports: [PrivadoComponent]
 })
 

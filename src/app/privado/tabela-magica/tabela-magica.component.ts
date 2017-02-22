@@ -4,22 +4,24 @@ import { FundamentoService } from './../../shared/service/publico/fundamentalist
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'invet-fundamentalista',
-  templateUrl: './fundamentalista.component.html',
-  styleUrls: ['./fundamentalista.component.scss'],
+  selector: 'invet-tabela-magica',
+  templateUrl: './tabela-magica.component.html',
+  styleUrls: ['./tabela-magica.component.scss'],
   providers: [FundamentoService]
 })
-export class FundamentalistaComponent implements OnInit {
-  alertaUtil: AlertaUtil = new AlertaUtil();  
-  papeisFundamentoTop: Papel[];
+export class TabelaMagicaComponent implements OnInit {
+  alertaUtil: AlertaUtil = new AlertaUtil();
+  papeisFundamento: Papel[];
 
   constructor(private fundamentoService: FundamentoService) { }
 
+
   ngOnInit() {
-    this.fundamentoService.recuperarListaTop5()
+
+    this.fundamentoService.recuperarLista()
       .subscribe(
       (data: Papel[]) => {
-        this.papeisFundamentoTop  = data;
+        this.papeisFundamento = data;
         // this.getTopCinco();
       },
       error => {
