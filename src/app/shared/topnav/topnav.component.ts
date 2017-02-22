@@ -1,7 +1,7 @@
+import { AuthService } from './../service/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Rx';
-import { AuthService } from './../shared/service/auth.service';
 
 @Component({
   selector: 'invet-topnav',

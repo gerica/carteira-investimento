@@ -4,18 +4,18 @@ import { Router, CanActivate } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
 @Injectable()
-export class AuthGuard implements CanActivate, OnInit, OnDestroy {
+export class AuthGuard implements CanActivate, OnDestroy {
 
   private temServidor = false;
   private _isAuthenticated = false;
   private sub: Subscription;
 
   constructor(private authService: AuthService,
-    private router: Router) { }
+    private router: Router) {
 
-  ngOnInit() {
     this.sub = this.authService.getAuth().subscribe(
       authStatus => {
+
         if (authStatus) {
           this._isAuthenticated = true;
         } else {
@@ -34,13 +34,14 @@ export class AuthGuard implements CanActivate, OnInit, OnDestroy {
   }
 
   canActivate() {
-    // console.log('TESTE');
-    // if (this.isAuth()) {      
-    //   return true;
+
+    // if (this.isAuth()) {
+
+      return true;
     // }
     // this.router.navigate(['publico']);
     // return false;
 
-    return true;
+
   }
 }

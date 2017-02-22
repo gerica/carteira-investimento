@@ -33,8 +33,7 @@ export class LoginComponent {
         this.authService.login(this.myForm.value)
             .then(
             result => {
-                this.route.navigate(['']);
-
+                this.route.navigate(['privado/privado-home']);
             }, error => {
                 this.alertaUtil.addMessage({
                     type: 'danger',

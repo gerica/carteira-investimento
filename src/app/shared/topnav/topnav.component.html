@@ -1,13 +1,13 @@
 <header class="header dark-bg">
-            <div class="toggle-nav">
+            <div class="toggle-nav" *ngIf="isAuthenticated">
                 <div class="icon-reorder tooltips" (click)="onChangeVisibility()" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
             </div>
 
             <!--logo start-->
-            <a href="index.html" class="logo">Carteira <span class="lite">Investimento</span></a>
+            <a  class="logo">Carteira <span class="lite">Investimento</span></a>
             <!--logo end-->
 
-            <div class="nav search-row" id="top_menu">
+            <div class="nav search-row" id="top_menu "*ngIf="isAuthenticated">
                 <!--  search form start -->
                 <ul class="nav top-menu">                    
                     <li>
@@ -223,7 +223,7 @@
                     <li class="dropdown" invetShowItens>
                         <!--[ngClass]="{'open': isShowMenuProfile}"-->
                         <!--[ngClass]="{'sidebar-closed': isClassVisible }"-->
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" >
+                        <a data-toggle="dropdown" class="dropdown-toggle" style="cursor: pointer">
                             <span class="profile-ava">
                                 <img alt="" src="assets/img/profile_tarcisio_35_35.jpg">
                             </span>

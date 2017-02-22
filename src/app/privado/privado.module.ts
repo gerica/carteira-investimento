@@ -1,6 +1,7 @@
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './../shared/shared.module';
-import { PublicoComponent } from './publico.component';
+import { PrivadoComponent } from './privado.component';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -9,10 +10,14 @@ import { AlertModule } from 'ng2-bootstrap';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
-    imports: [HomeModule,
-        SharedModule.forRoot(),],
-    declarations: [PublicoComponent],
-    exports: [PublicoComponent]
+    imports: [CommonModule,
+        RouterModule,
+        FormsModule,
+        AlertModule.forRoot(),
+        HomeModule,
+        SharedModule.forRoot()],
+    declarations: [PrivadoComponent],
+    exports: [PrivadoComponent]
 })
 
-export class PublicoModule { }
+export class PrivadoModule { }
