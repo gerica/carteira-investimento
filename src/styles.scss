@@ -22,3 +22,19 @@ $font-stack:    Helvetica, sans-serif;
     height: auto;
 }
 
+
+
+.fundo {
+     
+     height: auto;
+     border-radius: 0px;      
+     position: relative; 
+     margin: 0 0 19px 0; 
+     overflow: hidden; 
+     padding: 8px 15px; 
+     margin-bottom: 20px; 
+     list-style: none; 
+     background-color: #ffffff; 
+     border: 0px solid transparent; 
+     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); 
+}

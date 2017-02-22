@@ -24,7 +24,7 @@ export class ShowItensDirective {
     if (!clickedInside) {
       this.isOpen = false;
     } else {
-      this.isOpen = true;
+      this.isOpen = !this.isOpen;
     }
   }
 
