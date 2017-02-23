@@ -12,21 +12,10 @@ export class AxiomaComponent implements OnInit {
   nodes: any = [];
   axiomas = axiomas;
 
-  public groups: any[] = [
-    {
-      title: 'Dynamic Group Header - 1',
-      content: 'Dynamic Group Body - 1'
-    },
-    {
-      title: 'Dynamic Group Header - 2',
-      content: 'Dynamic Group Body - 2'
-    }
-  ];
-
   constructor() { }
 
   ngOnInit() {
-    this.cargaTree();
+
   }
 
   private cargaTree(): void {

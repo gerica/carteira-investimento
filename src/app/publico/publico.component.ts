@@ -14,11 +14,11 @@ export class PublicoComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log('Chamou o construtor público.');
-    // console.log(this.auth0Service.authenticated());
-    // if (this.auth0Service.authenticated()) {
-    //   this.router.navigate(['privado']);
-    // }
+    console.log('Chamou o construtor público.');
+    console.log(this.auth0Service.authenticated());
+    if (this.auth0Service.authenticated()) {
+      this.router.navigate(['privado/privado-home']);
+    }
   }
 
 }
