@@ -9,17 +9,12 @@ import { AuthService } from './../shared/service/auth.service';
   styleUrls: ['./privado.component.scss']
 })
 export class PrivadoComponent implements OnInit {
-  isClassClose: boolean = true;
 
   constructor(private route: Router) {
   }
 
   ngOnInit() {
-    this.onToogleMenu();
-  }
 
-  onToogleMenu(): void {
-    this.isClassClose = !this.isClassClose;
   }
 
 }

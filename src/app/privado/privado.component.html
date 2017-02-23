@@ -1,5 +1,5 @@
-<section id="container" [ngClass]="{'sidebar-closed': isClassClose }">
-	<invet-topnav [isAuthenticated]="true" (toggleMenuEmitter)="onToogleMenu()"></invet-topnav>
+<section id="container">
+	<invet-topnav [isAuthenticated]="true"></invet-topnav>
 	<invet-sidebar></invet-sidebar>
 	<router-outlet></router-outlet>
 </section>

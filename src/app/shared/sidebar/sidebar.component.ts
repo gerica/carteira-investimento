@@ -1,3 +1,5 @@
+import { Auth0Service } from './../service/auth0.service';
+import { Router } from '@angular/router';
 import { Component, OnInit, ElementRef, Inject } from '@angular/core';
 
 import * as jQuery from 'jquery';
@@ -10,9 +12,19 @@ import * as jQuery from 'jquery';
 
 export class SidebarComponent implements OnInit {
 
-  constructor( @Inject(ElementRef) private elementRef: ElementRef) { }
+  constructor(private auth0Service: Auth0Service,
+    private router: Router,
+    @Inject(ElementRef) private elementRef: ElementRef) { }
 
   ngOnInit() {
+
+    jQuery(this.elementRef.nativeElement).find('#sidebar .menu').click(function () {
+      var wSize = jQuery(window).width();
+      if (wSize <= 768) {
+        jQuery('#container').addClass('sidebar-close');
+        jQuery('#sidebar > ul').hide();
+      }
+    });
     jQuery(this.elementRef.nativeElement).find('#sidebar .sub-menu > a').click(function () {
       var last = jQuery('.sub-menu.open', jQuery('#sidebar'));
       jQuery('.menu-arrow').removeClass('arrow_carrot-right');
@@ -30,7 +42,6 @@ export class SidebarComponent implements OnInit {
       if (diff > 0) {
         jQuery("#sidebar").scrollTop();
       } else {
-        console.log(diff);
         jQuery('#sideba').scroll();
       }
 
@@ -39,6 +50,33 @@ export class SidebarComponent implements OnInit {
       // else
       //     jQuery("#sidebar").scrollTo("+="+Math.abs(diff),500);
     });
+
+
+    // sidebar menu toggle
+    jQuery(function () {
+      function responsiveView() {
+        var wSize = jQuery(window).width();
+        if (wSize <= 768) {
+          jQuery('#container').addClass('sidebar-close');
+          jQuery('#sidebar > ul').hide();
+        }
+
+        if (wSize > 768) {
+          jQuery('#container').removeClass('sidebar-close');
+          jQuery('#sidebar > ul').show();
+        }
+      }
+      jQuery(window).on('load', responsiveView);
+      jQuery(window).on('resize', responsiveView);
+    });
+
   }
+
+  onLogout(): void {
+    this.auth0Service.logout();
+    localStorage.removeItem('_profile');
+    this.router.navigate(['publico']);
+  }
+
 
 }

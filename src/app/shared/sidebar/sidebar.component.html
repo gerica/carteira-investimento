@@ -3,19 +3,19 @@
     <!-- sidebar menu start-->
     <ul class="sidebar-menu">
       <li class="active">
-        <a class="" href="#" [routerLink]="['privado-home']">
+        <a class="menu" href="#" [routerLink]="['privado-home']">
           <i class="icon_house_alt"></i>
           <span>Dashboard</span>
         </a>
       </li>
       <li>
-        <a class="" href="#" [routerLink]="['tabela-magica']">
+        <a class="menu" href="#" [routerLink]="['tabela-magica']">
           <i class="icon_table"></i>
           <span>Fórmula Mágica</span>
         </a>
       </li>
       <li>
-        <a class="" href="#" [routerLink]="['axioma']">
+        <a class="menu" href="#" [routerLink]="['axioma']">
           <i class="fa fa-lightbulb-o"></i>
           <span>Axiomas</span>
         </a>
@@ -27,7 +27,7 @@
           <span class="menu-arrow arrow_carrot-right"></span>
         </a>
         <ul class="sub">
-          <li><a class="" href="#" [routerLink]="['privado/entrada']">Entrada</a></li>
+          <li><a class="" href="#" [routerLink]="['entrada']">Entrada</a></li>
           <li><a class="" href="#">Saída</a></li>
         </ul>
       </li>
@@ -35,6 +35,12 @@
         <a class="" href="chart-chartjs.html">
           <i class="icon_piechart"></i>
           <span>Gráfico</span>
+        </a>
+      </li>
+      <li>
+        <a class="menu" href="#" (click)="onLogout()">
+          <i class="icon_key_alt"></i>
+          <span>Log Out</span>
         </a>
       </li>
     </ul>
