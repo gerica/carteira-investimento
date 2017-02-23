@@ -1,47 +1,27 @@
+import { Auth0Service } from './../service/auth0.service';
 import { AuthService } from './../service/auth.service';
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
 @Injectable()
-export class AuthGuard implements CanActivate, OnDestroy {
+export class AuthGuard implements CanActivate {
 
   private temServidor = false;
-  private _isAuthenticated = false;
-  private sub: Subscription;
 
-  constructor(private authService: AuthService,
+  constructor(private auth0Service: Auth0Service,
     private router: Router) {
 
-    this.sub = this.authService.getAuth().subscribe(
-      authStatus => {
-
-        if (authStatus) {
-          this._isAuthenticated = true;
-        } else {
-          this._isAuthenticated = false;
-        }
-      }
-    );
-  }
-
-  isAuth(): boolean {
-    return this._isAuthenticated;
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
   }
 
   canActivate() {
-
-    // if (this.isAuth()) {
-
+    if (this.auth0Service.authenticated()) {
       return true;
-    // }
-    // this.router.navigate(['publico']);
-    // return false;
-
-
+    } else {
+      this.router.navigate(['publico']);
+      return false;
+    }
   }
+
+
 }

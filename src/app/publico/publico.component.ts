@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { Auth0Service } from './../shared/service/auth0.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth0Service: Auth0Service,
+    private router: Router) {
+  }
 
   ngOnInit() {
+    // console.log('Chamou o construtor público.');
+    // console.log(this.auth0Service.authenticated());
+    // if (this.auth0Service.authenticated()) {
+    //   this.router.navigate(['privado']);
+    // }
   }
 
 }

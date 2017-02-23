@@ -1,3 +1,5 @@
+import { Auth0Service } from './../../shared/service/auth0.service';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth0Service: Auth0Service) { }
 
   ngOnInit() {
+  }
+
+  login(): void {
+    this.auth0Service.login();
   }
 
 }

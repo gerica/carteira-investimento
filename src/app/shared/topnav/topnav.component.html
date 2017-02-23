@@ -227,13 +227,13 @@
                             <span class="profile-ava">
                                 <img alt="" src="assets/img/profile_tarcisio_35_35.jpg">
                             </span>
-                            <span class="username">Rogério Cardoso</span>
+                            <span class="username">{{profile.name}}</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="#"><i class="icon_profile"></i> My Profile</a>
+                                <a ><i class="icon_profile"></i> My Profile</a>
                             </li>
                             <li>
                                 <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
@@ -257,7 +257,7 @@
                 <ul class="nav pull-right top-menu">                    
                     
                     <li class="dropdown" invetShowItens>                    
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" [routerLink]="['login']">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" (click)="login()">
                             <span class="profile-ava">
                                 <i class="fa fa-user-o" aria-hidden="true"></i>
                             </span>

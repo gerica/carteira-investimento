@@ -12,7 +12,7 @@ export const PrivadoRoutes: Route[] = [
         path: 'privado',
         component: PrivadoComponent,
         children: [
-            ...HomeRoutes,            
+            ...HomeRoutes,
             ...AxiomaRoutes,
             ...TabelaMagicaRoutes
         ],
