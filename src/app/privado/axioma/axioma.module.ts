@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { AlertModule } from 'ng2-bootstrap';
+import { AlertModule, AccordionModule } from 'ng2-bootstrap';
 import { TreeModule } from 'angular2-tree-component';
 
 @NgModule({
@@ -11,6 +11,7 @@ import { TreeModule } from 'angular2-tree-component';
         RouterModule,
         FormsModule,
         AlertModule.forRoot(),
+        AccordionModule.forRoot(),
         TreeModule],
     declarations: [AxiomaComponent],
     exports: [AxiomaComponent]

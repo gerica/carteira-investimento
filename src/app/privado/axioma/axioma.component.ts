@@ -10,6 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class AxiomaComponent implements OnInit {
 
   nodes: any = [];
+  axiomas = axiomas;
+
+  public groups: any[] = [
+    {
+      title: 'Dynamic Group Header - 1',
+      content: 'Dynamic Group Body - 1'
+    },
+    {
+      title: 'Dynamic Group Header - 2',
+      content: 'Dynamic Group Body - 2'
+    }
+  ];
 
   constructor() { }
 
@@ -46,7 +58,7 @@ export class AxiomaComponent implements OnInit {
             name: axiomaSub.titulo
           });
 
-          let nodeChildren = node.children.find(cur => cur.id === axiomaSub.id);          
+          let nodeChildren = node.children.find(cur => cur.id === axiomaSub.id);
           nodeChildren.children = [];
           for (const v of axiomaSub.conteudo) {
             id = id + 1;
@@ -56,7 +68,7 @@ export class AxiomaComponent implements OnInit {
             });
           }
         }
-      }      
+      }
     }
   }
 }

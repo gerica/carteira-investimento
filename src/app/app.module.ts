@@ -9,10 +9,11 @@ import { routing } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
-import { AUTH_PROVIDERS } from 'angular2-jwt';
+// import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDhNUrO6kuDGg0jVJucTY0UWJQ49vHv10Q",
@@ -21,6 +22,10 @@ export const firebaseConfig = {
   storageBucket: "carteira-investimento.appspot.com",
   messagingSenderId: "810679544393"
 };
+
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp(new AuthConfig({}), http, options);
+}
 
 
 @NgModule({
@@ -37,7 +42,14 @@ export const firebaseConfig = {
     SharedModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
   ],
-  providers: [AuthService, AuthGuard, Auth0Service, AUTH_PROVIDERS],
+  providers: [AuthService,
+    AuthGuard,
+    Auth0Service,
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [Http, RequestOptions]
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

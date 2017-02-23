@@ -18,7 +18,6 @@ import {
     TypeaheadModule
 } from 'ng2-bootstrap';
 
-
 @NgModule({
     imports: [CommonModule,
         RouterModule,

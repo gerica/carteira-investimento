@@ -1,3 +1,4 @@
+import { FiltrarPorPapelPipe } from './../../shared/pipe/filtrar-por-papel.pipe';
 import { TabelaMagicaComponent } from './tabela-magica.component';
 
 import { NgModule } from '@angular/core';
@@ -11,7 +12,7 @@ import { AlertModule } from 'ng2-bootstrap';
         RouterModule,
         FormsModule,
         AlertModule.forRoot()],
-    declarations: [TabelaMagicaComponent],
+    declarations: [TabelaMagicaComponent, FiltrarPorPapelPipe],
     exports: [TabelaMagicaComponent]
 })
 
