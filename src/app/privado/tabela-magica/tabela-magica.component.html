@@ -38,7 +38,7 @@
             <tbody>
               <tr *ngFor="let p of papeisFundamento | filtrarPorPapel: textoProcurado.value">
                 <th scope="row">{{p.rank}}</th>
-                <td><a href="http://fundamentus.com.br/detalhes.php?papel={{p.papel}}" target="blank"> {{p.papel}}</a></td>
+                <td><a href="http://fundamentus.com.br/detalhes.php?papel={{p.papel}}" target="blank" data-toggle="tooltip" title="{{p.nome}}"> {{p.papel}}</a></td>
                 <td>{{p?.fundamento.p_l}}</td>
                 <td>{{p?.fundamento.p_vp}}</td>
                 <td>{{p?.fundamento.roe}}</td>

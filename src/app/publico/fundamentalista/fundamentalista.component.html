@@ -1,34 +1,33 @@
-
-  <div class="fundo">
-    <!--<p class="h3 text-center">Tabela Mágica (fundamentalista)</p>-->
-    <header class="panel-heading">
-      <p class="h3 text-center">
-        Fórmula Mágica (fundamentalista)
-      </p>
-    </header>
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Papel</th>
-          <th>P/L</th>
-          <th>P/VP</th>
-          <th>ROE</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let p of papeisFundamentoTop;">
-          <th scope="row">{{p.rank}}</th>
-          <td><a href="http://fundamentus.com.br/detalhes.php?papel={{p.papel}}" target="blank"> {{p.papel}}</a></td>
-          <td>{{p?.fundamento.p_l}}</td>
-          <td>{{p?.fundamento.p_vp}}</td>
-          <td>{{p?.fundamento.roe}}</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="5"></td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
+<div class="fundo">
+  <!--<p class="h3 text-center">Tabela Mágica (fundamentalista)</p>-->
+  <header class="panel-heading">
+    <p class="h3 text-center">
+      Fórmula Mágica (fundamentalista)
+    </p>
+  </header>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Papel</th>
+        <th>P/L</th>
+        <th>P/VP</th>
+        <th>ROE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of papeisFundamentoTop;">
+        <th scope="row">{{p.rank}}</th>
+        <td><a href="http://fundamentus.com.br/detalhes.php?papel={{p.papel}}" target="blank" data-toggle="tooltip" title="{{p.nome}}"> {{p.papel}}</a></td>
+        <td>{{p?.fundamento.p_l}}</td>
+        <td>{{p?.fundamento.p_vp}}</td>
+        <td>{{p?.fundamento.roe}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5"></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
