@@ -12,6 +12,7 @@ export class OperacaoService {
 
     public gravar(operacaoEntrada: OperacaoEntrada): void {
         this._fireBaseDB = this.af.database.list('/operacaoEntrada');
+        operacaoEntrada.converterCampos();
         this._fireBaseDB.push(operacaoEntrada);
     }
 

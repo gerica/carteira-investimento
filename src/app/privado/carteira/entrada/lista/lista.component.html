@@ -67,15 +67,22 @@
                 <div class="panel-body">
                   <div class="row">
                     <div class="col-sm-12">
-                      <p class="h4 list-group-item-heading text-center">Papel: {{operacaoVisualizar?.papel?.papel}}</p>
-                      <p class="h5 list-group-item-text">
-                        <span>Data: {{operacaoVisualizar?.data}}<br></span>
-                        <span>Tipo de Operação: {{operacaoVisualizar?.tipoOperacao}}<br></span>
-                        <span>Preço Unitário: {{operacaoVisualizar?.precoUnitario | currency:'BRL':true}}<br></span>
-                        <span>Despesa: {{operacaoVisualizar?.despesa | currency:'BRL':true}}<br></span>
-                        <span>Quantidade: {{operacaoVisualizar?.quantidade}}<br></span>
-                        <span>Observação: {{operacaoVisualizar?.observacao}}<br></span>
-                      </p>
+                      <div class="card text-center">
+                        <div class="card-header">
+                          <p class="h4 list-group-item-heading text-center">Papel: {{operacaoExcluir?.papel?.papel}}</p>
+                        </div>
+                        <div class="card-block">
+                          <h4 class="card-title">Dados da Operação</h4>
+                          <p class="h5 list-group-item-text">
+                            <span>Data: <strong>{{operacaoExcluir?.data}}</strong><br></span>
+                            <span>Tipo de Operação: <strong>{{operacaoExcluir?.tipoOperacao}}</strong><br></span>
+                            <span>Preço Unitário: <strong><mark>{{operacaoExcluir?.precoUnitario | currency:'BRL':true}}</mark></strong><br></span>
+                            <span>Despesa: <strong>{{operacaoExcluir?.despesa | currency:'BRL':true}}</strong><br></span>
+                            <span>Quantidade: <strong>{{operacaoExcluir?.quantidade}}</strong><br></span>
+                            <span>Observação: <strong>{{operacaoExcluir?.observacao}}</strong><br></span>
+                          </p>
+                        </div>
+                      </div>
                     </div>
 
                   </div>
@@ -116,17 +123,23 @@
                   <div class="panel-body">
                     <div class="row">
                       <div class="col-sm-12">
-                        <p class="h4 list-group-item-heading text-center">Papel: {{operacaoVisualizar?.papel?.papel}}</p>
-                        <p class="h5 list-group-item-text">
-                          <span>Data: {{operacaoVisualizar?.data}}<br></span>
-                          <span>Tipo de Operação: {{operacaoVisualizar?.tipoOperacao}}<br></span>
-                          <span>Preço Unitário: {{operacaoVisualizar?.precoUnitario | currency:'BRL':true}}<br></span>
-                          <span>Despesa: {{operacaoVisualizar?.despesa | currency:'BRL':true}}<br></span>
-                          <span>Quantidade: {{operacaoVisualizar?.quantidade}}<br></span>
-                          <span>Observação: {{operacaoVisualizar?.observacao}}<br></span>
-                        </p>
+                        <div class="card text-center">
+                          <div class="card-header">
+                            <p class="h4 list-group-item-heading text-center">Papel: {{operacaoVisualizar?.papel?.papel}}</p>
+                          </div>
+                          <div class="card-block">
+                            <h4 class="card-title">Dados da Operação</h4>
+                            <p class="h5 list-group-item-text">
+                              <span>Data: <strong>{{operacaoVisualizar?.data}}</strong><br></span>
+                              <span>Tipo de Operação: <strong>{{operacaoVisualizar?.tipoOperacao}}</strong><br></span>
+                              <span>Preço Unitário: <strong><mark>{{operacaoVisualizar?.precoUnitario | currency:'BRL':true}}</mark></strong><br></span>
+                              <span>Despesa: <strong>{{operacaoVisualizar?.despesa | currency:'BRL':true}}</strong><br></span>
+                              <span>Quantidade: <strong>{{operacaoVisualizar?.quantidade}}</strong><br></span>
+                              <span>Observação: <strong>{{operacaoVisualizar?.observacao}}</strong><br></span>
+                            </p>
+                          </div>
+                        </div>
                       </div>
-
                     </div>
                     <hr>
                     <div class="row">

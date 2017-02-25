@@ -10,4 +10,11 @@ export class OperacaoEntrada {
     observacao: string;
     papel: Papel;
     user_id: string;
+
+    public converterCampos() {
+        this.precoUnitario = parseFloat(this.precoUnitario.toString().replace(/,/g, '.'));
+        this.quantidade = parseFloat(this.quantidade.toString().replace(/,/g, '.'));
+        this.despesa = parseFloat(this.despesa.toString().replace(/,/g, '.'));
+    }
+
 }
