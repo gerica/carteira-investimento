@@ -13,11 +13,5 @@ export class PapelService {
     public getPapeis(): FirebaseListObservable<any> {
         return this.papeis;
     }
-
-    public gravar(operacaoEntrada: OperacaoEntrada): void {
-        operacaoEntrada.autor = parseInt(operacaoEntrada.autor + "");
-        this.reflexoes.push(operacaoEntrada);
-    }
-
 }
 

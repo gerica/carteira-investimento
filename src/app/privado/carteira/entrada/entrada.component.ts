@@ -56,7 +56,6 @@ export class EntradaComponent implements OnInit {
     let mes = dataLocal.toLocaleDateString().substring(3, 5);
     let dia = dataLocal.toLocaleDateString().substring(0, 2);
     this.operacao.data = ano + '-' + mes + '-' + dia;
-    console.log(this.operacao.data);
   }
 
   public onNotifyAlerta(message: any): void {

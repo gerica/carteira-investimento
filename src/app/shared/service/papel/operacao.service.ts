@@ -11,8 +11,15 @@ export class OperacaoService {
     }
 
     public gravar(operacaoEntrada: OperacaoEntrada): void {
-        console.log(operacaoEntrada);
         this.entradaFB.push(operacaoEntrada);
+    }
+
+    public getAllOperacaoEntrada(): FirebaseListObservable<any[]> {
+        return this.entradaFB;
+    }
+
+    public excluir(operacaoEntrada: OperacaoEntrada): void {
+        this.entradaFB.remove(operacaoEntrada.$key);
     }
 
 }

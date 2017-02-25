@@ -1,7 +1,7 @@
 import { Papel } from './../papel';
 
 export class OperacaoEntrada {
-    id: number;
+    $key: string;
     data: string;
     tipoOperacao: string;
     precoUnitario: number;
