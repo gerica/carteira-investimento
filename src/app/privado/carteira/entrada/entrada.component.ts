@@ -1,3 +1,4 @@
+import { Usuario } from './../../../shared/modelo/usuario';
 import { OperacaoService } from './../../../shared/service/papel/operacao.service';
 import { PapelService } from './../../../shared/service/papel/papel.service';
 import { Papel } from './../../../shared/modelo/papel';
@@ -41,6 +42,8 @@ export class EntradaComponent implements OnInit {
   public onGravar(event: any): void {
     event.preventDefault();
     // this.attData();    
+    let profile: Usuario = JSON.parse(localStorage.getItem('_profile'));
+    this.operacao.user_id = profile.user_id;
     this.operacaoService.gravar(this.operacao);
     this.alertaUtil.addMessage({
       type: 'success',

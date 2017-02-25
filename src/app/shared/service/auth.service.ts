@@ -39,13 +39,14 @@ export class AuthService {
     }
 
     public login(user: Usuario): firebase.Promise<FirebaseAuthState> {
-        return this.af.auth.login({
-            email: user.email,
-            password: user.password
-        }, {
-                method: AuthMethods.Password,
-                provider: AuthProviders.Password
-            });
+        // return this.af.auth.login({
+        //     email: user.email,
+        //     password: user.password
+        // }, {
+        //         method: AuthMethods.Password,
+        //         provider: AuthProviders.Password
+        //     });
+        return null;
 
     }
 

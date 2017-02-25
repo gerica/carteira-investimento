@@ -1,3 +1,5 @@
+import { UsuarioService } from './usuario.service';
+import { Usuario } from './../modelo/usuario';
 import { Router } from '@angular/router';
 // app/auth.service.ts
 
@@ -12,13 +14,14 @@ export class Auth0Service {
     // Configure Auth0
     lock = new Auth0Lock('XpA5pUL1JW31RJp9bMWkmqOVI70ZDtYz', 'rogeriocardoso.auth0.com', {});
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private usuarioService: UsuarioService) {
         // Add callback for lock `authenticated` event
         this.lock.on("authenticated", (authResult) => {
             localStorage.setItem('id_token', authResult.idToken);
 
             // Fetch profile information
-            this.lock.getProfile(authResult.idToken, (error, profile) => {                
+            this.lock.getProfile(authResult.idToken, (error, profile: Usuario) => {
+                usuarioService.onSaveUpdate(profile);                
                 localStorage.setItem('_profile', JSON.stringify(profile));
                 this.router.navigate(['privado/privado-home']);
             });

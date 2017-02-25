@@ -9,4 +9,5 @@ export class OperacaoEntrada {
     despesa: number;
     observacao: string;
     papel: Papel;
+    user_id: string;
 }

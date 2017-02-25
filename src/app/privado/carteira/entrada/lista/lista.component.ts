@@ -23,7 +23,8 @@ export class ListaComponent implements OnInit {
   }
 
   public recuperarOperacoesEntrada(): void {
-    this.operacaoService.getAllOperacaoEntrada().subscribe(
+    const usuario = JSON.parse(localStorage.getItem('_profile'));
+    this.operacaoService.getOperacaoEntradaByUsuario(usuario).subscribe(
       (data: OperacaoEntrada[]) => {
         this.entradas = data;
         console.log(this.entradas);

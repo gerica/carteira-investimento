@@ -1,3 +1,4 @@
+import { UsuarioService } from './shared/service/usuario.service';
 import { Auth0Service } from './shared/service/auth0.service';
 import { SharedModule } from './shared/shared.module';
 import { PrivadoModule } from './privado/privado.module';
@@ -45,6 +46,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   providers: [AuthService,
     AuthGuard,
     Auth0Service,
+    UsuarioService,
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
