@@ -1,3 +1,4 @@
+import { OperacaoSaida } from './../../modelo/carteira/operacao-saida';
 import { Usuario } from './../../modelo/usuario';
 import { OperacaoEntrada } from './../../modelo/carteira/operacao-entrada';
 import { Injectable } from '@angular/core';
@@ -16,6 +17,18 @@ export class OperacaoService {
         this._fireBaseDB.push(operacaoEntrada);
     }
 
+    public gravarSaida(operacao: OperacaoSaida): void {
+        this._fireBaseDB = this.af.database.list('/operacaoSaida');
+        operacao.converterCampos();
+        this._fireBaseDB.push(operacao);
+    }
+
+    public atualizarEntrada(operacao: OperacaoSaida): void {
+        this._fireBaseDB = this.af.database.list('/operacaoEntrada');
+        operacao.operacaoEntrada.quantidade = operacao.operacaoEntrada.quantidade - operacao.quantidade;
+        this._fireBaseDB.update(operacao.operacaoEntrada.$key, operacao.operacaoEntrada);
+    }
+
     public getOperacaoEntradaByUsuario(usuario: Usuario): FirebaseListObservable<any[]> {
         const queryObservable = this.af.database.list('/operacaoEntrada', {
             query: {
@@ -25,6 +38,17 @@ export class OperacaoService {
         });
         return queryObservable;
     }
+
+    public getOperacaoSaidaByUsuario(usuario: Usuario): FirebaseListObservable<any[]> {
+        const queryObservable = this.af.database.list('/operacaoSaida', {
+            query: {
+                orderByChild: 'user_id',
+                equalTo: usuario.user_id
+            }
+        });
+        return queryObservable;
+    }
+
 
     public excluir(operacaoEntrada: OperacaoEntrada): void {
         this._fireBaseDB.remove(operacaoEntrada.$key);

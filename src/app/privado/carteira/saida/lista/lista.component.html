@@ -1,0 +1,118 @@
+<section id="main-content">
+  <section class="wrapper">
+    <!--overview start-->
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 class="page-header"><i class="fa fa-laptop"></i> Home</h3>
+        <ol class="breadcrumb">
+          <li><i class="fa fa-home"></i><a href="#" [routerLink]="['../privado-home']">Home</a></li>
+        </ol>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-lg-12">
+            <section class="panel">
+              <header class="panel-heading">
+                Lista de Operações abertas
+              </header>
+              <div class="panel-body">
+                <table class="table table-hover table-sm">
+                  <thead>
+                    <tr>
+                      <th>Ações</th>
+                      <th>Papel</th>
+                      <th>Data</th>
+                      <th>Tipo de Operação</th>
+                      <th>Preço Unitário</th>
+                      <th>despesa</th>
+                      <th>Quantidade</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of saidas" (dblclick)="showModalVisualizar(item)">
+                      <td>
+                        <i class="fa fa-eye" aria-hidden="true" title="Visualizar" style="cursor:pointer" (click)="showModalVisualizar(item)"></i>
+                        <i class="fa fa-trash" aria-hidden="true" title="Remover" style="cursor:pointer" (click)="showModalExcluir(item)"></i>
+                        <i class="fa fa-external-link" aria-hidden="true" title="Sair" style="cursor:pointer" (click)="showModalSaida(item)"></i>
+                      </td>
+                      <td>{{item?.papel?.papel}}</td>
+                      <td>{{item?.data}}</td>
+                      <td>{{item?.tipoOperacao}}</td>
+                      <td>{{item?.precoUnitario | currency:'BRL':true}}</td>
+                      <td>{{item?.despesa | currency:'BRL':true}}</td>
+                      <td>{{item?.quantidade}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="text-right">
+    <div class="credits">
+      Rogério Cardoso
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!--Modal para visualizar 
+  <div bsModal #modalVisualizar="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="#modalVisualizar"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <form role="form">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <section class="panel">
+                  <header class="panel-heading">
+                    Dados da Operação de Entrada
+                    <button type="button" class="close" (click)="modalVisualizar.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                  </header>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="card text-center">
+                          <div class="card-header">
+                            <p class="h4 list-group-item-heading text-center">Papel: {{operacaoVisualizar?.papel?.papel}}</p>
+                          </div>
+                          <div class="card-block">
+                            <h4 class="card-title">Dados da Operação</h4>
+                            <p class="h5 list-group-item-text">
+                              <span>Data: <strong>{{operacaoVisualizar?.data}}</strong><br></span>
+                              <span>Tipo de Operação: <strong>{{operacaoVisualizar?.tipoOperacao}}</strong><br></span>
+                              <span>Preço Unitário: <strong><mark>{{operacaoVisualizar?.precoUnitario | currency:'BRL':true}}</mark></strong><br></span>
+                              <span>Despesa: <strong>{{operacaoVisualizar?.despesa | currency:'BRL':true}}</strong><br></span>
+                              <span>Quantidade: <strong>{{operacaoVisualizar?.quantidade}}</strong><br></span>
+                              <span>Observação: <strong>{{operacaoVisualizar?.observacao}}</strong><br></span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <button type="button" class="btn btn-danger" (click)="modalVisualizar.hide()">Fechar</button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>-->

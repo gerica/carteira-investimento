@@ -18,11 +18,11 @@
             </tr>
           </thead>
           <tbody>
-
             <tr *ngFor="let item of entradas" (dblclick)="showModalVisualizar(item)">
               <td>
                 <i class="fa fa-eye" aria-hidden="true" title="Visualizar" style="cursor:pointer" (click)="showModalVisualizar(item)"></i>
                 <i class="fa fa-trash" aria-hidden="true" title="Remover" style="cursor:pointer" (click)="showModalExcluir(item)"></i>
+                <i class="fa fa-external-link" aria-hidden="true" title="Sair" style="cursor:pointer" (click)="showModalSaida(item)"></i>
               </td>
               <td>{{item?.papel?.papel}}</td>
               <td>{{item?.data}}</td>
@@ -32,20 +32,13 @@
               <td>{{item?.quantidade}}</td>
             </tr>
           </tbody>
-          <!--<tfoot>
-            <tr>
-              <td colspan="4">
-                <pagination-controls class="lista-reflexao-pagination" id="reflexaoLista" (pageChange)="p = $event" #api directionLinks="false"
-                  maxSize="9" autoHide="true"></pagination-controls>
-              </td>
-            </tr>
-          </tfoot>-->
         </table>
       </div>
     </section>
   </div>
 </div>
 
+<invet-saida [notifyAbriModal]="notifyAbriModal" (notifyFecharModal)="onNotifyFecharModal($event)"></invet-saida>
 
 <!-- Modal para apagar -->
 <div bsModal #modalExcluir="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"

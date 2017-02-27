@@ -39,6 +39,7 @@ export class EntradaComponent implements OnInit {
 
     setTimeout(() => this.activeOperacaoForm = true, 0);
   }
+
   public onGravar(event: any): void {
     event.preventDefault();
     // this.attData();    
@@ -62,6 +63,14 @@ export class EntradaComponent implements OnInit {
   }
 
   public onNotifyAlerta(message: any): void {
+    this.alertaUtil.addMessage(message);
+  }
+
+  /**
+       * Método será chamado toda vez que o componete filho, marcado com @Output(), emitir algum sinal para ele.
+       * Nesse caso o componete @Output() notifyFecharModal da classe notifyAbriModalModalComponent.
+       */
+  public onNotify(message: any): void {
     this.alertaUtil.addMessage(message);
   }
 

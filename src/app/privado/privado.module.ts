@@ -1,3 +1,4 @@
+import { SaidaModule } from './carteira/saida/saida.module';
 import { EntradaModule } from './carteira/entrada/entrada.module';
 import { TabelaMagicaModule } from './tabela-magica/tabela-magica.component.module';
 import { HomeModule } from './home/home.module';
@@ -20,6 +21,7 @@ import { EntradaComponent } from './carteira/entrada/entrada.component';
         HomeModule,
         TabelaMagicaModule,
         EntradaModule,
+        SaidaModule,
         SharedModule.forRoot()],
     declarations: [PrivadoComponent],
     exports: [PrivadoComponent]

@@ -1,6 +1,6 @@
 import { OperacaoService } from './../../../../shared/service/papel/operacao.service';
 import { OperacaoEntrada } from './../../../../shared/modelo/carteira/operacao-entrada';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ng2-bootstrap';
 
 @Component({
@@ -12,6 +12,8 @@ export class ListaComponent implements OnInit {
   entradas: OperacaoEntrada[];
   operacaoExcluir: OperacaoEntrada;
   operacaoVisualizar: OperacaoEntrada;
+  @Output() notify: EventEmitter<any> = new EventEmitter<any>();
+  notifyAbriModal: OperacaoEntrada;
 
   @ViewChild('modalExcluir') public modalExcluir: ModalDirective;
   @ViewChild('modalVisualizar') public modalVisualizar: ModalDirective;
@@ -26,8 +28,10 @@ export class ListaComponent implements OnInit {
     const usuario = JSON.parse(localStorage.getItem('_profile'));
     this.operacaoService.getOperacaoEntradaByUsuario(usuario).subscribe(
       (data: OperacaoEntrada[]) => {
-        this.entradas = data;
-        console.log(this.entradas);
+        this.entradas = data.filter(el => {
+          if (el.quantidade > 0)
+            return el;
+        });
       },
       error => {
         console.log(error);
@@ -51,5 +55,19 @@ export class ListaComponent implements OnInit {
     this.operacaoVisualizar = entrada;
     this.modalVisualizar.show();
   }
+
+  public showModalSaida(entrada: OperacaoEntrada): void {
+    this.notifyAbriModal = entrada;
+  }
+
+  /**
+       * Método será chamado toda vez que o componete filho, marcado com @Output(), emitir algum sinal para ele.
+       * Nesse caso o componete @Output() notifyFecharModal da classe notifyAbriModalModalComponent.
+       */
+  public onNotifyFecharModal(message: any): void {
+    this.recuperarOperacoesEntrada();
+    this.notify.emit(message);
+  }
+
 
 }

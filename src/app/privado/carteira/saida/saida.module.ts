@@ -1,6 +1,5 @@
 import { SaidaModalComponent } from './../saida/saida.modal.component';
 import { InputMaskCurrentDirective } from './../../../shared/diretives/input-mask-current.directive';
-import { EntradaComponent } from './entrada.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -11,15 +10,10 @@ import { ListaComponent } from './lista/lista.component';
 @NgModule({
     imports: [CommonModule,
         RouterModule,
-        FormsModule,
-        ReactiveFormsModule,
         AlertModule.forRoot(),
         ModalModule.forRoot()],
-    declarations: [EntradaComponent,
-        InputMaskCurrentDirective,
-        ListaComponent,
-        SaidaModalComponent],
-    exports: [EntradaComponent]
+    declarations: [ListaComponent],
+    exports: [ListaComponent]
 })
 
-export class EntradaModule { }
+export class SaidaModule { }

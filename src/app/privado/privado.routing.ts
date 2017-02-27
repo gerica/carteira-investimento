@@ -1,3 +1,4 @@
+import { SaidaRoutes } from './carteira/saida/saida.routing';
 import { EntradaRoutes } from './carteira/entrada/entrada.routing';
 import { TabelaMagicaRoutes } from './tabela-magica/tabela-magica.component.routing';
 import { AxiomaRoutes } from './axioma/axioma.routing';
@@ -16,7 +17,8 @@ export const PrivadoRoutes: Route[] = [
             ...HomeRoutes,
             ...AxiomaRoutes,
             ...TabelaMagicaRoutes,
-            ...EntradaRoutes
+            ...EntradaRoutes,
+            ...SaidaRoutes
         ],
         canActivate: [AuthGuard]
     }
