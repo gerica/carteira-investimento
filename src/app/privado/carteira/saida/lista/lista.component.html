@@ -6,6 +6,7 @@
         <h3 class="page-header"><i class="fa fa-laptop"></i> Home</h3>
         <ol class="breadcrumb">
           <li><i class="fa fa-home"></i><a href="#" [routerLink]="['../privado-home']">Home</a></li>
+          <li><i class="fa fa-lightbulb-o"></i><a href="#" [routerLink]="['../lista-saidas']">Saída</a></li>
         </ol>
       </div>
     </div>
@@ -15,34 +16,72 @@
           <div class="col-lg-12">
             <section class="panel">
               <header class="panel-heading">
-                Lista de Operações abertas
+                Lista de Operações fechadas
               </header>
               <div class="panel-body">
                 <table class="table table-hover table-sm">
                   <thead>
                     <tr>
-                      <th>Ações</th>
+                      <th>
+                        <i class="fa fa-minus-square-o" style="cursor:pointer" *ngIf="mostarTabelaSaidaAll" aria-hidden="true" title="Saídas" (click)="showHideTabelaSaidaAll()"
+                          title="Esconder operações de saída"></i>
+                          <i class="fa fa-plus-square-o" style="cursor:pointer" *ngIf="!mostarTabelaSaidaAll" aria-hidden="true" title="Saídas" (click)="showHideTabelaSaidaAll()"
+                            title="Apresentar operações de saída"></i>
+                      </th>
                       <th>Papel</th>
                       <th>Data</th>
-                      <th>Tipo de Operação</th>
                       <th>Preço Unitário</th>
-                      <th>despesa</th>
                       <th>Quantidade</th>
+                      <th>Despesa</th>
+                      <th>Total</th>
+                      <th>Saldo</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr *ngFor="let item of saidas" (dblclick)="showModalVisualizar(item)">
+                  <tbody *ngFor="let item of saidas" (dblclick)="showModalVisualizar(item)">
+                    <tr [class.success]="item.saldo >0" [class.danger]="item.saldo <0">
                       <td>
-                        <i class="fa fa-eye" aria-hidden="true" title="Visualizar" style="cursor:pointer" (click)="showModalVisualizar(item)"></i>
-                        <i class="fa fa-trash" aria-hidden="true" title="Remover" style="cursor:pointer" (click)="showModalExcluir(item)"></i>
-                        <i class="fa fa-external-link" aria-hidden="true" title="Sair" style="cursor:pointer" (click)="showModalSaida(item)"></i>
+                        <!--<i class="fa fa-eye" aria-hidden="true" title="Visualizar" style="cursor:pointer" (click)="showModalVisualizar(item)"></i>-->
+                        <i class="fa fa-minus-square-o" style="cursor:pointer" *ngIf="item.flagShow" aria-hidden="true" title="Saídas" (click)="toggleSaida(item)"
+                          title="Esconder operações de saída"></i>
+                          <i class="fa fa-plus-square-o" style="cursor:pointer" *ngIf="!item.flagShow" aria-hidden="true" title="Saídas" (click)="toggleSaida(item)"
+                            title="Apresentar operações de saída"></i>
                       </td>
-                      <td>{{item?.papel?.papel}}</td>
+                      <td>{{item?.operacaoEntrada?.papel?.papel}}</td>
                       <td>{{item?.data}}</td>
-                      <td>{{item?.tipoOperacao}}</td>
                       <td>{{item?.precoUnitario | currency:'BRL':true}}</td>
-                      <td>{{item?.despesa | currency:'BRL':true}}</td>
                       <td>{{item?.quantidade}}</td>
+                      <td>{{item?.despesa | currency:'BRL':true}}</td>
+                      <td>{{item?.total| currency:'BRL':true}}</td>
+                      <td>{{item?.saldo| currency:'BRL':true}}</td>
+                    </tr>
+                    <tr *ngIf="item?.flagShow">
+                      <td></td>
+                      <td style="text-align: center; vertical-align: middle">
+                        <i class="fa fa-long-arrow-right fa-3x" aria-hidden="true" title="Operação(ões) Entrada(s)"></i>
+                      </td>
+                      <td colspan="3">
+                        <table class="table table-sm">
+                          <thead>
+                            <tr>
+                              <th>Data</th>
+                              <th>Preço Unitário</th>
+                              <th>Quantidade</th>
+                              <th>Despesa</th>
+                              <th>Total</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>{{item?.operacaoEntrada?.data}}</td>
+                              <td>{{item?.operacaoEntrada?.precoUnitario | currency:'BRL':true}}</td>
+                              <td>{{item?.operacaoEntrada?.quantidade}}</td>
+                              <td>{{item?.operacaoEntrada?.despesa | currency:'BRL':true}}</td>
+                              <td>{{item?.operacaoEntrada?.total| currency:'BRL':true}}</td>
+                            </tr>
+                            <td></td>
+                          </tbody>
+                        </table>
+                      </td>
                     </tr>
                   </tbody>
                 </table>

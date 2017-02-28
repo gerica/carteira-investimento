@@ -1,3 +1,6 @@
+import { OperacaoService } from './../../shared/service/papel/operacao.service';
+import { EntradaModule } from './../carteira/entrada/entrada.module';
+import { ListaComponent } from './../carteira/entrada/lista/lista.component';
 import { AxiomaModule } from './../axioma/axioma.module';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
@@ -9,11 +12,13 @@ import { AlertModule } from 'ng2-bootstrap';
 @NgModule({
     imports: [CommonModule,
         RouterModule,
-        FormsModule,        
+        FormsModule,
         AlertModule.forRoot(),
-        AxiomaModule],
+        AxiomaModule,
+        EntradaModule],
     declarations: [HomeComponent],
-    exports: [HomeComponent]
+    exports: [HomeComponent],
+    providers: [OperacaoService]
 })
 
 export class HomeModule { }

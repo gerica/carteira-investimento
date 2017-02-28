@@ -11,6 +11,9 @@ export class OperacaoEntrada {
     papel: Papel;
     user_id: string;
 
+    // apresentar na tela
+    total: number;
+
     public converterCampos() {
         this.precoUnitario = parseFloat(this.precoUnitario.toString().replace(/,/g, '.'));
         this.quantidade = parseFloat(this.quantidade.toString().replace(/,/g, '.'));

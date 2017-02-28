@@ -19,7 +19,7 @@ import { ListaComponent } from './lista/lista.component';
         InputMaskCurrentDirective,
         ListaComponent,
         SaidaModalComponent],
-    exports: [EntradaComponent]
+    exports: [EntradaComponent, ListaComponent]
 })
 
 export class EntradaModule { }
