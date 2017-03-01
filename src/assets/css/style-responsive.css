@@ -1,5 +1,7 @@
 @media (min-width: 980px) {
-
+    #tabela-tela-pequena{
+        display: none;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
@@ -10,6 +12,10 @@
 
     .inbox-wrapper .inbox-right {
         width: 70%;
+    }
+
+    #tabela-tela-pequena{
+        display: none;
     }
 
 }
@@ -225,7 +231,7 @@
 
 
 @media (max-width: 740px) {
-    #task_notificatoin_bar,#mail_notificatoin_bar,#alert_notificatoin_bar{
+    #task_notificatoin_bar,#mail_notificatoin_bar,#alert_notificatoin_bar, #tabela-tela-grande{
         display: none;
     }
 }

@@ -19,7 +19,7 @@
                 Lista de Operações fechadas
               </header>
               <div class="panel-body">
-                <table class="table table-hover table-sm">
+                <table class="table table-hover table-sm" id="tabela-tela-grande">
                   <thead>
                     <tr>
                       <th>
@@ -76,6 +76,62 @@
                               <td>{{item?.operacaoEntrada?.precoUnitario | currency:'BRL':true}}</td>
                               <td>{{item?.operacaoEntrada?.quantidade}}</td>
                               <td>{{item?.operacaoEntrada?.despesa | currency:'BRL':true}}</td>
+                              <td>{{item?.operacaoEntrada?.total| currency:'BRL':true}}</td>
+                            </tr>
+                            <td></td>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table class="table table-hover table-sm" id="tabela-tela-pequena">
+                  <thead>
+                    <tr>
+                      <th>
+                        <i class="fa fa-minus-square-o" style="cursor:pointer" *ngIf="mostarTabelaSaidaAll" aria-hidden="true" title="Saídas" (click)="showHideTabelaSaidaAll()"
+                          title="Esconder operações de saída"></i>
+                          <i class="fa fa-plus-square-o" style="cursor:pointer" *ngIf="!mostarTabelaSaidaAll" aria-hidden="true" title="Saídas" (click)="showHideTabelaSaidaAll()"
+                            title="Apresentar operações de saída"></i>
+                      </th>
+                      <th>Papel</th>
+                      <th>Data</th>
+                      <th>Total</th>
+                      <th>Saldo</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let item of saidas" (dblclick)="showModalVisualizar(item)">
+                    <tr [class.success]="item.saldo >0" [class.danger]="item.saldo <0">
+                      <td>
+                        <!--<i class="fa fa-eye" aria-hidden="true" title="Visualizar" style="cursor:pointer" (click)="showModalVisualizar(item)"></i>-->
+                        <i class="fa fa-minus-square-o" style="cursor:pointer" *ngIf="item.flagShow" aria-hidden="true" title="Saídas" (click)="toggleSaida(item)"
+                          title="Esconder operações de saída"></i>
+                          <i class="fa fa-plus-square-o" style="cursor:pointer" *ngIf="!item.flagShow" aria-hidden="true" title="Saídas" (click)="toggleSaida(item)"
+                            title="Apresentar operações de saída"></i>
+                      </td>
+                      <td>{{item?.operacaoEntrada?.papel?.papel}}</td>
+                      <td>{{item?.data}}</td>                      
+                      <td>{{item?.total| currency:'BRL':true}}</td>
+                      <td>{{item?.saldo| currency:'BRL':true}}</td>
+                    </tr>
+                    <tr *ngIf="item?.flagShow">
+                      <td></td>
+                      <td style="text-align: center; vertical-align: middle">
+                        <i class="fa fa-long-arrow-right fa-3x" aria-hidden="true" title="Operação(ões) Entrada(s)"></i>
+                      </td>
+                      <td colspan="3">
+                        <table class="table table-sm">
+                          <thead>
+                            <tr>
+                              <th>Data</th>
+                              <th>Preço Unitário</th>                              
+                              <th>Total</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>{{item?.operacaoEntrada?.data}}</td>
+                              <td>{{item?.operacaoEntrada?.precoUnitario | currency:'BRL':true}}</td>                              
                               <td>{{item?.operacaoEntrada?.total| currency:'BRL':true}}</td>
                             </tr>
                             <td></td>
