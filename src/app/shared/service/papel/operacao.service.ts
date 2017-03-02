@@ -50,8 +50,9 @@ export class OperacaoService {
     }
 
 
-    public excluir(operacaoEntrada: OperacaoEntrada): void {
-        this._fireBaseDB.remove(operacaoEntrada.$key);
+    public excluir(operacaoEntrada: OperacaoEntrada): firebase.Promise<void> {
+        this._fireBaseDB = this.af.database.list('/operacaoEntrada');
+        return this._fireBaseDB.remove(operacaoEntrada.$key);
     }
 
 }

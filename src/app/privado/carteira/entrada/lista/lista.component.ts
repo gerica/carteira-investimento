@@ -41,7 +41,17 @@ export class ListaComponent implements OnInit {
 
   public excluir(event: any): void {
     event.preventDefault();
-    this.operacaoService.excluir(this.operacaoExcluir);
+    this.operacaoService.excluir(this.operacaoExcluir)
+      .then((result) => {
+        this.onNotifyFecharModal(
+          {
+            type: 'success',
+            closable: true,
+            msg: `Operação realizada com sucesso`
+          }
+        );
+      })
+      .catch(error => console.log(error));
     this.modalExcluir.hide();
   }
 
