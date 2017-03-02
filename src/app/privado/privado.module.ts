@@ -1,3 +1,4 @@
+import { PerfilModule } from './perfil/perfil.module';
 import { AcaoModule } from './acao/acao.module';
 import { SaidaModule } from './carteira/saida/saida.module';
 import { EntradaModule } from './carteira/entrada/entrada.module';
@@ -25,7 +26,8 @@ import { AcaoComponent } from './acao/acao.component';
         TabelaMagicaModule,
         EntradaModule,
         SaidaModule,
-        AcaoModule
+        AcaoModule,
+        PerfilModule
     ],
     declarations: [PrivadoComponent],
     exports: [PrivadoComponent]

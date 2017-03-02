@@ -1,3 +1,4 @@
+import { PerfilRoutes } from './perfil/perfil.routing';
 import { AcaoRoutes } from './acao/acao.routing';
 import { SaidaRoutes } from './carteira/saida/saida.routing';
 import { EntradaRoutes } from './carteira/entrada/entrada.routing';
@@ -20,7 +21,8 @@ export const PrivadoRoutes: Route[] = [
             ...TabelaMagicaRoutes,
             ...EntradaRoutes,
             ...SaidaRoutes,
-            ...AcaoRoutes
+            ...AcaoRoutes,
+            ...PerfilRoutes
         ],
         canActivate: [AuthGuard]
     }
