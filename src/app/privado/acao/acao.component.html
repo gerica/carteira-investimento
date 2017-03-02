@@ -11,7 +11,51 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-        lista de ações
+        <section class="panel">
+          <header class="panel-heading">
+            <p class="h3 text-center">
+              Lista de Ações
+            </p>
+          </header>
+          <div class="panel-body">
+            <input type="text" name="textoProcurado" class="form-control" placeholder="Filtrar Papel" #textoProcurado (keyup)="0">
+            <hr>
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>Papel</th>
+                  <th>P/L</th>
+                  <th>P/VP</th>
+                  <th>ROE</th>
+                  <th>Crescimento</th>
+                  <th>Divi. Yield</th>
+                  <th>Liqui. 2 Mes</th>
+                  <th>Liquiq. Corr.</th>
+                  <th>Margem EBIT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of papeis | filtrarPorPapel: textoProcurado.value">
+                  <td><a href="http://fundamentus.com.br/detalhes.php?papel={{p.papel}}" target="blank" data-toggle="tooltip"
+                      title="{{p.nome}}"> {{p.papel}}</a></td>
+                  <td>{{p?.fundamento.p_l}}</td>
+                  <td>{{p?.fundamento.p_vp}}</td>
+                  <td>{{p?.fundamento.roe}}</td>
+                  <td>{{p?.fundamento.crescimento}}</td>
+                  <td>{{p?.fundamento.dividentoYIELD}}</td>
+                  <td>{{p?.fundamento.liquidez2Meses}}</td>
+                  <td>{{p?.fundamento.liquidezCorrete}}</td>
+                  <td>{{p?.fundamento.margemEBIT}}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="10"></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </section>
       </div>
     </div>
   </section>

@@ -1,3 +1,4 @@
+import { FiltrarPorPapelPipe } from './pipe/filtrar-por-papel.pipe';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ShowItensDirective } from './topnav/show-itens.directive';
 import { TopnavComponent } from './topnav/topnav.component';
@@ -34,7 +35,8 @@ import {
         TypeaheadModule.forRoot()],
     declarations: [TopnavComponent,
         ShowItensDirective,
-        SidebarComponent],
+        SidebarComponent,
+        FiltrarPorPapelPipe],
     exports: [CommonModule,
         AlertModule,
         ButtonsModule,
@@ -51,7 +53,8 @@ import {
         ReactiveFormsModule,
         TopnavComponent,
         ShowItensDirective,
-        SidebarComponent]
+        SidebarComponent,
+        FiltrarPorPapelPipe]
 })
 
 export class SharedModule {

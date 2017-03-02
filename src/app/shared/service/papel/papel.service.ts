@@ -4,14 +4,12 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Injectable()
 export class PapelService {
-    papeis: FirebaseListObservable<any[]>;
 
     constructor(private af: AngularFire) {
-        this.papeis = this.af.database.list('/papeis');
     }
 
     public getPapeis(): FirebaseListObservable<any> {
-        return this.papeis;
+        return this.af.database.list('/papeis');
     }
 }
 

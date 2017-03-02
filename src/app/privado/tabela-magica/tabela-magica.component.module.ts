@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { FiltrarPorPapelPipe } from './../../shared/pipe/filtrar-por-papel.pipe';
 import { TabelaMagicaComponent } from './tabela-magica.component';
 
@@ -11,8 +12,9 @@ import { AlertModule } from 'ng2-bootstrap';
     imports: [CommonModule,
         RouterModule,
         FormsModule,
-        AlertModule.forRoot()],
-    declarations: [TabelaMagicaComponent, FiltrarPorPapelPipe],
+        AlertModule.forRoot(),
+        SharedModule.forRoot()],
+    declarations: [TabelaMagicaComponent],
     exports: [TabelaMagicaComponent]
 })
 
