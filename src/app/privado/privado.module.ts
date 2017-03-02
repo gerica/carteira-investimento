@@ -1,3 +1,4 @@
+import { AcaoModule } from './acao/acao.module';
 import { SaidaModule } from './carteira/saida/saida.module';
 import { EntradaModule } from './carteira/entrada/entrada.module';
 import { TabelaMagicaModule } from './tabela-magica/tabela-magica.component.module';
@@ -12,17 +13,20 @@ import { AlertModule } from 'ng2-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { TabelaMagicaComponent } from './tabela-magica/tabela-magica.component';
 import { EntradaComponent } from './carteira/entrada/entrada.component';
+import { AcaoComponent } from './acao/acao.component';
 
 @NgModule({
     imports: [CommonModule,
         RouterModule,
         FormsModule,
         AlertModule.forRoot(),
+        SharedModule.forRoot(),
         HomeModule,
         TabelaMagicaModule,
         EntradaModule,
         SaidaModule,
-        SharedModule.forRoot()],
+        AcaoModule
+    ],
     declarations: [PrivadoComponent],
     exports: [PrivadoComponent]
 })
