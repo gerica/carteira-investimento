@@ -14,6 +14,8 @@ export class ListaComponent implements OnInit {
   operacaoVisualizar: OperacaoEntrada;
   @Output() notify: EventEmitter<any> = new EventEmitter<any>();
   notifyAbriModal: OperacaoEntrada;
+  totalQuantidade: number;
+  totalValor: number;
 
   @ViewChild('modalExcluir') public modalExcluir: ModalDirective;
   @ViewChild('modalVisualizar') public modalVisualizar: ModalDirective;
@@ -32,6 +34,7 @@ export class ListaComponent implements OnInit {
           if (el.quantidade > 0)
             return el;
         });
+        this.calcularTotais();
       },
       error => {
         console.log(error);
@@ -77,6 +80,16 @@ export class ListaComponent implements OnInit {
   public onNotifyFecharModal(message: any): void {
     this.recuperarOperacoesEntrada();
     this.notify.emit(message);
+  }
+
+  private calcularTotais(): void {
+    this.totalQuantidade = 0;
+    this.totalValor = 0;
+    for (let e of this.entradas) {
+      e.total = (e.precoUnitario * e.quantidade) + e.despesa;
+      this.totalQuantidade += e.quantidade;
+      this.totalValor += e.total;
+    }
   }
 
 
