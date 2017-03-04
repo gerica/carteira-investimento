@@ -16,6 +16,7 @@ export class ListaComponent implements OnInit {
   notifyAbriModal: OperacaoEntrada;
   totalQuantidade: number;
   totalValor: number;
+  checkAgrupar: boolean = true;
 
   @ViewChild('modalExcluir') public modalExcluir: ModalDirective;
   @ViewChild('modalVisualizar') public modalVisualizar: ModalDirective;
@@ -34,7 +35,11 @@ export class ListaComponent implements OnInit {
           if (el.quantidade > 0)
             return el;
         });
-        this.calcularTotais();
+        if (this.checkAgrupar) {
+          this.onAgruparPapel(this.checkAgrupar);
+        } else {
+          this.calcularTotais();
+        }
       },
       error => {
         console.log(error);
@@ -82,6 +87,46 @@ export class ListaComponent implements OnInit {
     this.notify.emit(message);
   }
 
+  onAgruparPapel(checked: boolean) {
+    this.checkAgrupar = checked;
+    const entradasAgrupada: OperacaoEntrada[] = [];
+
+    if (this.checkAgrupar) {
+      this.calcularTotais();
+      for (let e of this.entradas) {
+        const incluido = entradasAgrupada.find((element, index, array) => {
+          if (e.papel.papel === element.papel.papel) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+
+        if (incluido) {
+          for (let ea of entradasAgrupada) {
+            if (e.papel.papel === ea.papel.papel) {
+              // console.log(ea);
+              ea.quantidade += e.quantidade;
+              if (!ea.total) {
+                ea.total = 0;
+              }
+              ea.total += e.total;
+              ea.precoUnitario = ea.total / ea.quantidade;
+            }
+          }
+        } else {
+          entradasAgrupada.push(e);
+        }
+      }
+      this.entradas = entradasAgrupada;
+      this.calcularTotais();
+
+    } else {
+      this.recuperarOperacoesEntrada();
+    }
+
+  }
+
   private calcularTotais(): void {
     this.totalQuantidade = 0;
     this.totalValor = 0;
@@ -91,6 +136,5 @@ export class ListaComponent implements OnInit {
       this.totalValor += e.total;
     }
   }
-
 
 }

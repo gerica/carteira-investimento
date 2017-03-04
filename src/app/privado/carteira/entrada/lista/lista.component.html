@@ -1,11 +1,19 @@
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-md-12">
     <section class="panel">
       <header class="panel-heading">
         Lista de Operações Abertas
       </header>
       <div class="panel-body">
-        <table class="table table-striped table-bordered table-sm" id="tabela-tela-grande">
+        <div class="form-group">
+          <div class="col-md-2">
+            <label class="control-label">Agrupar Papeis&nbsp;</label>
+            <label class="checkbox-inline">                
+                <input type="checkbox" [checked]="checkAgrupar" (click)="onAgruparPapel($event.target.checked)"/>
+            </label>
+          </div>
+        </div>
+        <table class="table table-striped table-bordered table-sm" id="tabela-tela-grande" *ngIf="!checkAgrupar">
           <thead>
             <tr>
               <th>Ações</th>
@@ -43,12 +51,46 @@
             </tr>
           </tfoot>
         </table>
+        <table class="table table-striped table-bordered table-sm" id="tabela-tela-grande" *ngIf="checkAgrupar">
+          <thead>
+            <tr>
+              <th>Ações</th>
+              <th>Papel</th>              
+              <th>Tipo de Operação</th>
+              <th>Preço Unitário</th>              
+              <th>Quantidade</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of entradas" (dblclick)="showModalVisualizar(item)">
+              <td>
+                <i class="fa fa-eye" aria-hidden="true" title="Visualizar" style="cursor:pointer" (click)="showModalVisualizar(item)"></i>
+                <i class="fa fa-trash" aria-hidden="true" title="Remover" style="cursor:pointer" (click)="showModalExcluir(item)"></i>
+                <i class="fa fa-external-link" aria-hidden="true" title="Sair" style="cursor:pointer" (click)="showModalSaida(item)"></i>
+              </td>
+              <td>{{item?.papel?.papel}}</td>              
+              <td>{{item?.tipoOperacao}}</td>
+              <td>{{item?.precoUnitario | currency:'BRL':true}}</td>              
+              <td>{{item?.quantidade}}</td>
+              <td>{{item?.total | currency:'BRL':true}}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Totais</td>
+              <td colspan="3"></td>
+              <td>{{totalQuantidade}}</td>
+              <td>{{totalValor | currency:'BRL':true}}</td>
+            </tr>
+          </tfoot>
+        </table>
         <table class="table table-striped table-bordered table-sm" id="tabela-tela-pequena">
           <thead>
             <tr>
               <th>Ações</th>
               <th>Papel</th>
-              <th>Data</th>
+              <th>Qunatidade</th>
               <th>Preço Unitário</th>
             </tr>
           </thead>
@@ -60,15 +102,14 @@
                 <i class="fa fa-external-link" aria-hidden="true" title="Sair" style="cursor:pointer" (click)="showModalSaida(item)"></i>
               </td>
               <td>{{item?.papel?.papel}}</td>
-              <td>{{item?.data}}</td>
+              <td>{{item?.quantidade}}</td>
               <td>{{item?.precoUnitario | currency:'BRL':true}}</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
-              <td>Total Qtd</td>
+              <td colspan="2">Totais </td>              
               <td>{{totalQuantidade}}</td>
-              <td>Total Valor</td>
               <td>{{totalValor | currency:'BRL':true}}</td>
             </tr>
           </tfoot>
@@ -140,7 +181,7 @@
 <!-- Modal para visualizar -->
 <div bsModal #modalVisualizar="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="#modalVisualizar"
   aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-md">
     <div class="modal-content">
       <form role="form">
         <div class="modal-body">

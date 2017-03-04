@@ -16,7 +16,7 @@
           <div class="panel-body">
             <div class="col-lg-2 col-sm-2">
               <h4>{{profile.name}}</h4>
-              <div class="follow-ava">                
+              <div class="follow-ava">
                 <img src="{{profile.picture}}" alt="">
               </div>
               <h6>{{profile.nickname}}</h6>
@@ -31,32 +31,29 @@
                 </span>
                 <span><i class="icon_calendar"></i>
                 {{data | date: 'dd/mm/yyyy'}}
-                </span>                
+                </span>
               </h6>
             </div>
             <div class="col-lg-2 col-sm-6 follow-info weather-category">
               <ul>
                 <li class="active">
-
-                  <i class="fa fa-comments fa-2x"> </i><br> Contrary to popular belief, Lorem Ipsum is not simply
+                  <i class="fa fa-book fa-2x"> </i><br> Quantidade de Papeis
+                  <br>{{totalQuantidade}}
                 </li>
-
               </ul>
             </div>
             <div class="col-lg-2 col-sm-6 follow-info weather-category">
               <ul>
                 <li class="active">
-
-                  <i class="fa fa-bell fa-2x"> </i><br> Contrary to popular belief, Lorem Ipsum is not simply
+                  <i class="fa fa-money fa-2x"> </i><br> Total Aplicado
+                  <br>{{totalValor | currency:'BRL':true}}
                 </li>
-
               </ul>
             </div>
             <div class="col-lg-2 col-sm-6 follow-info weather-category">
               <ul>
                 <li class="active">
-
-                  <i class="fa fa-tachometer fa-2x"> </i><br> Contrary to popular belief, Lorem Ipsum is not simply
+                  <i class="fa fa-tachometer fa-2x"> </i><br> Investimento<br>&nbsp;
                 </li>
 
               </ul>
