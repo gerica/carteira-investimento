@@ -17,8 +17,13 @@ export class UsuarioService {
                 if (usuario.user_id === u.user_id) {
                     console.log('gravando...');
                     const itemObservable = this._fireBaseDB.update(u.$key, usuario);
-                    itemObservable.then(_ => console.log('success update'))
-                        .catch(err => console.log(err, 'You dont have access, update!'));
+                    itemObservable.then(_ => {
+                        console.log('success update');
+                        return;
+                    }).catch(err => {
+                        console.log(err, 'You dont have access, update!');
+                        return;
+                    });
                     isExiste = true;
                     return;
                 }

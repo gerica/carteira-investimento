@@ -23,6 +23,7 @@ export class Auth0Service {
             this.lock.getProfile(authResult.idToken, (error, profile: Usuario) => {
                 usuarioService.onSaveUpdate(profile);                
                 localStorage.setItem('_profile', JSON.stringify(profile));
+                console.log('Redirecionar para área privada');
                 this.router.navigate(['privado/privado-home']);
             });
         });

@@ -17,6 +17,7 @@ export class PublicoComponent implements OnInit {
     console.log('Chamou o construtor público.');
     console.log(this.auth0Service.authenticated());
     if (this.auth0Service.authenticated()) {
+      console.log('Redirecionando');
       this.router.navigate(['privado/privado-home']);
     }
   }
